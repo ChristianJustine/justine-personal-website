@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justine Christian | Elite Profile</title>
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #996515;
+            --black: #121212;
+            --dark-gray: #2A2A2A;
+            --light-gray: #E5E5E5;
+            --white: #F8F8F8;
+            --gradient: linear-gradient(135deg, #D4AF37 0%, #F5D78E 50%, #D4AF37 100%);
+            --blue-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+        
+        body {
+            font-family: 'Garamond', 'Times New Roman', serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-gray);
+            background-color: #f5f5f5;
+            background-image: url('https://www.transparenttextures.com/patterns/diagonal-striped-brick.png');
+        }
+        
+        .navbar {
+            background-color: var(--black);
+            overflow: hidden;
+            padding: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .navbar:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+        }
+        
+        .navbar a {
+            color: var(--light-gray);
+            text-align: center;
+            padding: 20px 24px;
+            text-decoration: none;
+            font-size: 18px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+        
+        .navbar a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+        
+        .navbar a.active {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .navbar a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 15px;
+            left: 24px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .navbar a:hover:after {
+            width: calc(100% - 48px);
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 50px;
+            background-color: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--gradient);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            position: relative;
+        }
+        
+        .header:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        
+        h1 {
+            color: var(--black);
+            font-size: 42px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: var(--gold);
+        }
+        
+        h2 {
+            color: var(--dark-gold);
+            font-size: 28px;
+            margin-top: 50px;
+            padding-bottom: 10px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--gold), transparent);
+        }
+        
+        .profile-img {
+            display: block;
+            margin: 30px auto;
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            padding: 5px;
+            background: var(--gradient);
+            border-radius: 5px;
+            transform: rotate(3deg);
+            transition: all 0.5s ease;
+        }
+        
+        .profile-img:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+        
+        p {
+            font-size: 18px;
+            color: var(--dark-gray);
+            text-align: justify;
+            margin: 20px 0;
+        }
+        
+        ul, ol {
+            font-size: 17px;
+            color: var(--dark-gray);
+            padding-left: 24px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        ul li:before {
+            content: '•';
+            color: var(--gold);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        ol {
+            counter-reset: list-counter;
+        }
+        
+        ol li {
+            counter-increment: list-counter;
+        }
+        
+        ol li:before {
+            content: counter(list-counter);
+            color: var(--gold);
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5em;
+            margin-left: -1.5em;
+        }
+        
+        .bio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .bio-item {
+            padding: 20px;
+            border-left: 3px solid var(--gold);
+            background-color: rgba(212, 175, 55, 0.05);
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        
+        .bio-item strong {
+            display: block;
+            color: var(--dark-gold);
+            margin-bottom: 8px;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed var(--light-gray);
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .experience-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            background: white;
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+        
+        .experience-title {
+            font-weight: bold;
+            color: var(--black);
+            font-size: 18px;
+        }
+        
+        .experience-year {
+            color: var(--dark-gold);
+            font-style: italic;
+            display: inline-block;
+            margin-top: 5px;
+            padding: 3px 10px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .hobby-list, .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .hobby-list li, .skills-list li {
+            padding: 20px;
+            border: 1px solid var(--light-gray);
+            background-color: white;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hobby-list li:before, .skills-list li:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+        }
+        
+        .hobby-list li:hover, .skills-list li:hover {
+            border-color: var(--gold);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gold);
+            font-size: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .social-link:hover {
+            color: white;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .social-link:hover:before {
+            left: 0;
+        }
+        
+        .tagline {
+            color: var(--dark-gold);
+            font-size: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .tagline:before, .tagline:after {
+            content: '"';
+            color: var(--gold);
+            font-size: 24px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            position: relative;
+            color: var(--dark-gray);
+            font-size: 14px;
+        }
+        
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 25%;
+            width: 50%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        
+        /* New elements */
+        .quote-box {
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid var(--gold);
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .quote-box:before {
+            content: '\201C';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 60px;
+            color: rgba(212, 175, 55, 0.2);
+            font-family: Georgia, serif;
+        }
+        
+        .quote-box p {
+            margin: 0;
+            padding-left: 40px;
+            font-size: 18px;
+            color: var(--dark-gray);
+        }
+        
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+        
+        .badge {
+            padding: 8px 15px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+        }
+        
+        .badge i {
+            margin-right: 8px;
+        }
+        
+        .progress-container {
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+            width: 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        /* Animation effects */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .container > * {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .container > *:nth-child(1) { animation-delay: 0.1s; }
+        .container > *:nth-child(2) { animation-delay: 0.2s; }
+        .container > *:nth-child(3) { animation-delay: 0.3s; }
+        .container > *:nth-child(4) { animation-delay: 0.4s; }
+        .container > *:nth-child(5) { animation-delay: 0.5s; }
+        .container > *:nth-child(6) { animation-delay: 0.6s; }
+        .container > *:nth-child(7) { animation-delay: 0.7s; }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 30px;
+            }
+            
+            .profile-img {
+                width: 220px;
+                height: 220px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            .navbar a {
+                padding: 15px 18px;
+                font-size: 16px;
+                margin: 0 10px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="active">JUSTINE CHRISTIAN</a>
+        <a href="karakter.html">JAMIE DIMON, CEO JPMorgan Chase & Co.</a>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <img src="J_Christian.png" alt="Justine Christian" class="profile-img">
+            <h1>JUSTINE CHRISTIAN</h1>
+            <div class="tagline">"Passionate in technology, leadership, and motorsports"</div>
+            
+            <div class="badge-container">
+                <div class="badge"><i class="fas fa-medal"></i> Future Leader</div>
+                <div class="badge"><i class="fas fa-laptop-code"></i> Tech Enthusiast</div>
+                <div class="badge"><i class="fas fa-car"></i> Motorsport Fan</div>
+                <div class="badge"><i class="fas fa-graduation-cap"></i> Santa Laurensia</div>
+            </div>
+        </div>
+        
+        <div class="quote-box">
+            <p>Ambitious student with a passion for technology, leadership, and motorsports. Currently developing skills in programming and business management while actively participating in school organizations and international programs.</p>
+        </div>
+        
+        <h2>DATA PRIBADI</h2>
+        <div class="bio-grid">
+            <div class="bio-item">
+                <strong>NAMA LENGKAP</strong>
+                <span>Justine Christian</span>
+            </div>
+            <div class="bio-item">
+                <strong>TANGGAL LAHIR</strong>
+                <span>18 Desember 2010</span>
+            </div>
+            <div class="bio-item">
+                <strong>TEMPAT LAHIR</strong>
+                <span>Tangerang, Indonesia</span>
+            </div>
+            <div class="bio-item">
+                <strong>NOMOR TELEPON</strong>
+                <span>+62 817 776 756</span>
+            </div>
+            <div class="bio-item">
+                <strong>EMAIL</strong>
+                <span>j.christiansukamartabak@gmail.com<br>justine.c@santa-laurensia.sch.id</span>
+            </div>
+            <div class="bio-item">
+                <strong>ALAMAT</strong>
+                <span>Alam Sutera, Tangerang</span>
+            </div>
+            <div class="bio-item">
+                <strong>CITA-CITA</strong>
+                <span>Entrepreneur/CEO di bidang teknologi atau finansial</span>
+            </div>
+            <div class="bio-item">
+                <strong>IDOLA</strong>
+                <span>Jamie Dimon (CEO JPMorgan Chase)</span>
+            </div>
+        </div>
+        
+        <h2>PENGALAMAN ORGANISASI & KEPEMIMPINAN</h2>
+        <div class="experience-list">
+            <div class="experience-item">
+                <div class="experience-title">Ketua Divisi OSIS Technical Affairs</div>
+                <div class="experience-year">2025 - Sekarang</div>
+                <p>Memimpin tim technical untuk mendukung semua kegiatan OSIS dengan solusi teknologi dan logistik.</p>
+            </div>
+            <div class="experience-item">
+                <div class="experience-title">OSIS SMP Santa Laurensia, Divisi Technical Affairs</div>
+                <div class="experience-year">2024</div>
+                <p>Bertanggung jawab dalam penyiapan peralatan teknis untuk berbagai acara sekolah.</p>
+            </div>
+            <div class="experience-item">
+                <div class="experience-title">Wakil Ketua Yearbook Divisi Perkap</div>
+                <div class="experience-year">2025</div>
+                <p>Mengkoordinasi perlengkapan untuk pembuatan yearbook angkatan.</p>
+            </div>
+            <div class="experience-item">
+                <div class="experience-title">PHKS Open House Bahasa Indonesia</div>
+                <div class="experience-year">2024</div>
+                <p>Berpartisipasi aktif dalam acara promosi sekolah kepada calon siswa baru.</p>
+            </div>
+        </div>
+        
+        <h2>PROGRAM & PENCAPAIAN INTERNASIONAL</h2>
+        <div class="experience-list">
+            <div class="experience-item">
+                <div class="experience-title">Program Tagajo/OECD</div>
+                <div class="experience-year">2024-2025</div>
+                <p>Program pertukaran pelajar internasional yang berfokus pada pengembangan keterampilan abad 21 dan pemecahan masalah global.</p>
+            </div>
+        </div>
+        
+        <h2>PRESTASI</h2>
+        <div class="bio-grid">
+            <div class="bio-item">
+                <strong>DETERMINATION AWARD</strong>
+                <span>2023 - Santa Laurensia</span>
+                <p>Penghargaan untuk ketekunan dan semangat pantang menyerah dalam pembelajaran.</p>
+            </div>
+        </div>
+        
+        <h2>KEAHLIAN</h2>
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Coding/Programming</span>
+                <span>85%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%"></div>
+            </div>
+            
+            <div class="progress-label">
+                <span>Public Speaking</span>
+                <span>90%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 90%"></div>
+            </div>
+            
+            <div class="progress-label">
+                <span>Leadership</span>
+                <span>88%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 88%"></div>
+            </div>
+            
+            <div class="progress-label">
+                <span>Komunikasi</span>
+                <span>92%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 92%"></div>
+            </div>
+        </div>
+        
+        <h2>HOBI & MINAT</h2>
+        <ul class="hobby-list">
+            <li><i class="fas fa-volleyball-ball"></i> Bermain Voli</li>
+            <li><i class="fas fa-gamepad"></i> Bermain Game</li>
+            <li><i class="fas fa-tv"></i> Menonton TV</li>
+            <li><i class="fas fa-car"></i> Bermain Gokart</li>
+            <li><i class="fas fa-racing-car"></i> Modifikasi Mobil di Gran Turismo 7</li>
+            <li><i class="fas fa-futbol"></i> Bermain Sepak Bola</li>
+            <li><i class="fas fa-chart-line"></i> Bisnis & Investasi</li>
+            <li><i class="fas fa-laptop-code"></i> Teknologi</li>
+        </ul>
+        
+        <h2>PENDIDIKAN</h2>
+        <div class="bio-grid">
+            <div class="bio-item">
+                <strong>SEKOLAH TK</strong>
+                <span>TK Santa Laurensia (2015-2017)</span>
+                <p>Pendidikan dasar awal dengan fokus pada pengembangan karakter dan kreativitas.</p>
+            </div>
+            <div class="bio-item">
+                <strong>SEKOLAH DASAR</strong>
+                <span>SD Santa Laurensia (2017-2023)</span>
+                <p>Membangun fondasi akademik yang kuat dengan berbagai kegiatan ekstrakurikuler.</p>
+            </div>
+            <div class="bio-item">
+                <strong>SEKOLAH MENENGAH PERTAMA</strong>
+                <span>SMP Santa Laurensia (2023-Sekarang)</span>
+                <p>Mengembangkan keterampilan kepemimpinan dan partisipasi aktif dalam berbagai program sekolah.</p>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-links">
+            <a href="https://instagram.com/j.christian1810" class="social-link" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://twitter.com/J_Christian44" class="social-link" target="_blank" title="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="mailto:j.christiansukamartabak@gmail.com" class="social-link" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        
+        <div class="footer">
+            © 2025 Profil Justine Christian | Hak Cipta Dilindungi | Terakhir diperbarui: Mei 2025
+        </div>
+    </div>
+    
+    <script>
+        // Simple animation for progress bars
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
